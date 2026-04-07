@@ -1,0 +1,25 @@
+{
+  "name": "api_cadastro_backend",
+  "version": "1.0.0",
+  "description": "BackEnd com Node.js e Express de uma página de cadastro",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@prisma/client": "^6.16.3",
+    "axios": "^1.12.2",
+    "cors": "^2.8.6",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.7.0",
+    "prisma": "^6.16.3",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}
