@@ -65,43 +65,23 @@ app.post('/users', async (req,res) => {
 
 
 //HTTP Get - Listar usuários
-app.get('/users', async (req,res) => {
-
-    try{
-          let users = [];
-          const {name, email, age} = req.query;
-          let elementoContem = {};
-   
-
-    if (name){
-        elementoContem.name = {contains: name, mode: 'insensitive' };
-    }
-    if(email){
-        elementoContem.email = {contains: email, mode: 'insensitive'};
-    }
-    if(age){
-        const ageAsNumber = Number(age);
-        if(!isNaN(ageAsNumber)) {
-            elementoContem.age = ageAsNumber
-        }
-    }
-
-    users = await prisma.user.findMany({
-        where: elementoContem
-    });
-    
-    return res.status(200).json(users);
-  
- } catch(error)  {
-
-        console.error("Erro ao identificar usuários: ");
+app.get('/users', async (req, res) => {
+    try {
+        // Primeiro, tentamos buscar tudo sem filtros para testar a conexão
+        const users = await prisma.user.findMany();
+        return res.status(200).json(users);
+        
+    } catch (error) {
+        console.error("❌ ERRO DETALHADO NO GET /USERS:", error);
+        
+        // Retornamos o erro real para a tela do navegador para sabermos o que corrigir
         return res.status(500).json({
-            message: `Erro interno nos usuários.`
+            message: "Erro interno nos usuários.",
+            error: error.message,
+            code: error.code
         });
- }
-
+    }
 });
-
 
 //HTTP Put - Editar usuário
 app.put('/users/:id', async (req, res) => {
