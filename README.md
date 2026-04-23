@@ -1,53 +1,63 @@
-# 🚀 Full Stack User Management System
-> Uma solução robusta de gerenciamento de usuários com integração real entre Frontend, Backend e Banco de Dados Cloud.
+# 🚀 Portfólio Pessoal - Gabriel Duarte
+> Desenvolvedor Full Stack focado em criar experiências digitais modernas, performance e design responsivo.
 
-Este projeto demonstra o domínio do ecossistema JavaScript moderno, focando em **escalabilidade**, **persistência de dados** e **experiência do usuário (UX)**.
+Este projeto é a minha vitrine tecnológica, demonstrando o domínio de ferramentas modernas para construção de interfaces de alto impacto e sistemas escaláveis.
 
 ---
 
 ## 🌐 Deploy Online
 
-Para visualizar a aplicação funcionando em tempo real, acesse o link abaixo:
+Confira o resultado final em tempo real:
 
-[![Acessar Projeto](https://img.shields.io/badge/Acessar%20Projeto-Online-brightgreen?style=for-the-badge&logo=render)](https://manager-frontend-tsbm.onrender.com)
+[![Acessar Portfólio](https://img.shields.io/badge/Acessar%20Portfólio-Online-646cff?style=for-the-badge&logo=vercel)](https://portifolio-gabriel-duarte.vercel.app)
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-### **Backend**
-- **Node.js & Express**: API RESTful de alta performance.
-- **Prisma ORM**: Modelagem de dados e consultas otimizadas.
-- **MongoDB Atlas**: Banco de Dados NoSQL escalável na nuvem.
+### **Frontend & UI/UX**
+- **React 19**: Versão mais recente para uma interface ultra-rápida.
+- **Vite**: Build tool de alta performance.
+- **Tailwind CSS 4**: Estilização moderna com o novo motor de renderização.
+- **Lucide React**: Ícones otimizados e consistentes.
 
-### **Frontend**
-- **React.js (Vite)**: Interface dinâmica e componentizada.
-- **Axios**: Comunicação assíncrona com a API.
-- **Styled Components**: Estilização moderna e isolada.
+### **Persistência & Integração**
+- **EmailJS**: Integração de formulário de contato sem necessidade de servidor backend próprio.
+- **React Router Dom**: Navegação SPA (Single Page Application) fluida.
+- **Framer Motion**: Animações complexas e interativas.
 
 ---
 
-## 📸 Demonstração da Aplicação
+## 🎨 Destaques do Projeto
 
-| Interface do Usuário | Monitoramento no MongoDB Atlas |
+| Design Responsivo | Dark Mode & Efeitos |
 | :---: | :---: |
-| <img src="https://github.com/user-attachments/assets/0c83cb98-2423-42ae-9b56-55be28898534" width="400" alt="Interface do Usuário"> | <img src="https://github.com/user-attachments/assets/2ccb3cf7-08b4-4878-9cf6-4cc74eafeae2" width="400" alt="Monitoramento MongoDB"> |
+| ![Mobile Friendly](https://img.shields.io/badge/Responsivo-Sim-brightgreen) | ![Tema](https://img.shields.io/badge/Tema-Dinâmico-blueviolet) |
+
+- **Centralização Inteligente:** Seção de projetos adaptativa (Flexbox) que mantém o equilíbrio visual independente da quantidade de itens.
+- **Star Background:** Fundo animado dinâmico que reage ao tema escolhido (Light/Dark).
+- **SEO & Performance:** Estrutura de código limpa visando rapidez de carregamento e acessibilidade.
 
 ---
+
 ## 💡 Desafios Técnicos & Aprendizados
-Durante o desenvolvimento, foquei em resolver problemas reais de engenharia de software:
 
-1. **Integridade de Dados**: Implementei uma camada de tratamento no Backend para garantir que dados de formulário (Strings) fossem convertidos corretamente para tipos numéricos antes da persistência no MongoDB via Prisma.
-2. **Segurança e CORS**: Configurei políticas de compartilhamento de recursos (CORS) para permitir a comunicação segura entre o domínio do React (Hospedado no Render) e a API Node.js.
-3. **Ambiente Cloud**: Configurei clusters no MongoDB Atlas e realizei o Deploy Full Stack no Render, garantindo alta disponibilidade da aplicação.
+Neste projeto, apliquei conceitos avançados de desenvolvimento:
+
+1. **Clean Code em React**: Organização de componentes em pastas específicas (`Hero`, `Skills`, `Projects`), facilitando a manutenção.
+2. **Aliases de Caminho**: Configuração de `@/` via Vite e `jsconfig.json` para importações mais limpas e profissionais.
+3. **Deploy Contínuo (CI/CD)**: Configuração de pipeline na Vercel para atualização automática a cada `push` no GitHub.
 
 ---
 
-## ⚙️ Como Executar o Projeto (Localmente)
+## ⚙️ Como Executar o Projeto Localmente
 
-Siga os passos abaixo para rodar a aplicação em sua máquina local.
-
-### 1. Clonar o Repositório
 ```bash
-git clone [https://github.com/gabrielSSDuarteDev/FullStack-User-Manager.git](https://github.com/gabrielSSDuarteDev/FullStack-User-Manager.git)
-cd FullStack-User-Manager
+# 1. Clone o repositório
+git clone [https://github.com/gabrielSSDuarteDev/Portifolio_Gabriel_Duarte.git](https://github.com/gabrielSSDuarteDev/Portifolio_Gabriel_Duarte.git)
+
+# 2. Instale as dependências
+npm install
+
+# 3. Rode o servidor de desenvolvimento
+npm run dev
