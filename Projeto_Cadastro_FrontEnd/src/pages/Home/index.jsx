@@ -64,15 +64,17 @@ function Home() {
     // Requisição para adicionar usuário com tratamento de erros
     try {
       setIsLoading(true);
-      await api.post('/users', {
+      const response = await api.post('/users', {
         name: name,
         age: age,
         email: email
       });
-    } catch (error) {
+      toast.success(response.data.message || "Usuário adicionado com sucesso!");
+    }
+    catch (error) {
       console.error("Erro ao adicionar usuário:", error);
-      toast.error("Ocorreu um erro ao adicionar o usuário. Tente novamente.");
-      return;
+      const errorMessage = error.response?.data?.message || "Ocorreu um erro ao adicionar o usuário. Tente novamente.";
+      toast.error(errorMessage);
     }
     finally {
       setIsLoading(false);
@@ -283,13 +285,14 @@ function Home() {
           </header>
 
 
+          {/* Dentro da coluna_ListaUsuarios */}
           <div className="status_Messages">
             {isLoading ? (
-              <p>Carregando usuários</p>
+              <div className="loading_wrapper">
+                <p>Carregando usuários...</p>
+              </div>
             ) : (
-              users.length === 0 ? (
-                <p>Nenhum usuário cadastrado</p>
-              ) : null
+              users.length === 0 && <p className="empty_message">Nenhum usuário cadastrado</p>
             )}
           </div>
 

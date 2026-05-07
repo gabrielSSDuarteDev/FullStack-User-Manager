@@ -155,16 +155,26 @@ h1 {
 
   @include tablet {
     min-width: 0;
-    align-items: flex-start; 
+    align-items: center; 
+  }
+
+  header {
+    width: 100%;
+    text-align: center; 
   }
 }
 
   .status_Messages {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    min-height: 50px;
     border-radius: 10px;
 
     & p {
+      margin: 0;
       font-size: 18px;
       font-weight: bold;
       color: #e4d3d3;
