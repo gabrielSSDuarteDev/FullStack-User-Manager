@@ -6,10 +6,13 @@ const { PrismaClient } = pkg;
 const prisma = new PrismaClient();
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000' || import.meta.env.VITE_API_URL, 
+    methods: ['GET', 'POST', 'PUT', 'DELETE']  
+}));
 
 
-// ADICIONE ISSO AQUI:
+
 async function main() {
   try {
     await prisma.$connect();
@@ -30,6 +33,9 @@ main();
 app.post('/users', async (req,res) => {
 
     const {email, name, age} = req.body;
+    if(!email || !name || age === undefined){
+        return res.status(400).json({message: "Os campos 'email', 'name' e 'age' são obrigatórios."})
+    }
     const ageAsNumber = Number(age)
     
 
@@ -95,7 +101,11 @@ app.put('/users/:id', async (req, res) => {
     if(name !== undefined) updateData.name = name; 
 
     if(age !== undefined) {
-        updateData.age = Number(age);
+        const ageAsNumber = Number(age);
+        if(isNaN(ageAsNumber)){
+            return res.status(400).json({message: "O campo 'age' ou 'idade' deve ser um número válido."})
+        }
+        updateData.age = ageAsNumber;
      }
     
     try {
@@ -145,9 +155,7 @@ app.delete('/users/:id', async (req,res) => {
             }
         });
 
-        return res.status(204).json({
-            message: `Usuario Deletado com sucesso`
-        });
+        return res.status(204).json({message: "Usuário deletado com sucesso."});
 
     } catch (error) {
         console.error("Erro ao deletar o usuário:", error);
