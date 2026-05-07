@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:3000' || import.meta.env.VITE_API_URL, 
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE']  
 }));
 
@@ -51,7 +51,10 @@ app.post('/users', async (req,res) => {
                 age: ageAsNumber  // <--- ISSO PRECISA SER ASSIM (Sem req.body)
             }
         });
-        return res.status(201).json(addUser);
+        return res.status(201).json({
+            message: "Usuário criado com sucesso.",
+            user: addUser
+            });
     }
     catch(error){
         console.log("Falha ao criar usuário: ", error);
@@ -74,7 +77,14 @@ app.post('/users', async (req,res) => {
 app.get('/users', async (req, res) => {
     try {
         // Primeiro, tentamos buscar tudo sem filtros para testar a conexão
-        const users = await prisma.user.findMany();
+        const users = await prisma.user.findMany({
+            select: {
+                id: true,
+                email: true,
+                name: true,
+                age: true
+            }
+        });
         return res.status(200).json(users);
         
     } catch (error) {
@@ -118,7 +128,10 @@ app.put('/users/:id', async (req, res) => {
         
     });
 
-        return res.status(200).json(updatedUser);
+        return res.status(200).json({
+            message: "Usuário atualizado com sucesso.", 
+            user: updatedUser}
+        );
 
     } catch (error) {
         console.error("❌ ERRO REAL DO PRISMA:", error); 
@@ -155,7 +168,7 @@ app.delete('/users/:id', async (req,res) => {
             }
         });
 
-        return res.status(204).json({message: "Usuário deletado com sucesso."});
+        return res.status(200).json({message: "Usuário deletado com sucesso."});
 
     } catch (error) {
         console.error("Erro ao deletar o usuário:", error);
